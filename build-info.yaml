@@ -1,0 +1,30 @@
+serviceName: 'cicd-jenkins'
+jenkins:
+  autocleanup: true
+  data_kept_older_than: "100"
+  
+  
+   build:
+    steps:  
+      - name: Code Build
+        stageName: "Code Build"
+        type: genericCode
+        enabled: true
+        inputs: []
+        source: .
+#         artifact_type: "mvn"
+        image:
+          name: "stage runner image"
+          docker_run_params: "docker run parameters"
+        commands:
+            - "build command"
+            - "copy all the publish artifacts to a folder"
+            
+            
+    test:
+      steps:
+        - name: Code test
+          stageName: "Testing the code"
+          type: genericCode
+          enabled: true
+          
